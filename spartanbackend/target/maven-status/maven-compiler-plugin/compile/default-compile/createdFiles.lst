@@ -1,0 +1,12 @@
+com\spartan\spartanbackend\DALayer\UserDAO.class
+com\spartan\spartanbackend\model\UserCred.class
+com\spartan\spartanbackend\model\Product.class
+com\spartan\spartanbackend\DALayer\ProductDAOImpl.class
+com\spartan\spartanbackend\DALayer\UserDAOImpl.class
+com\spartan\spartanbackend\model\Category.class
+com\spartan\spartanbackend\DBConfig.class
+com\spartan\spartanbackend\DALayer\CategoryDAOImpl.class
+com\spartan\spartanbackend\DALayer\ProductDAO.class
+com\spartan\spartanbackend\App.class
+com\spartan\spartanbackend\DALayer\CategoryDAO.class
+com\spartan\spartanbackend\model\UserDetails.class
