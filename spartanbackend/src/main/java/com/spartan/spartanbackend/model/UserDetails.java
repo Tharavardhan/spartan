@@ -6,9 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
-
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -23,18 +22,19 @@ public class UserDetails {
 	
 	@Column(nullable=false,unique=true)
 	@NotBlank(message="Email id is mandatory")
-	@Email(regexp="[a-z0-9_]+@[a-z]+\\.[a-z]{2,3}")
+	@Email(regexp = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$",message="Please enter a valid Email id")
 	private String emailid;
 	
 	
 	@Column(nullable=false)
 	@NotBlank(message="Phone Number is mandatory")
-	@Pattern(regexp="[6789][0-9]{9}")
+	@Pattern(regexp = "[6789][0-9]{9}", message = "Not a valid mobile number.Mobile number must be in 10 digits")
 	private String phno;
 	
 	@Column(nullable=false)
 	@NotBlank(message="Password is mandatory")
-	@Pattern(regexp="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}")
+	 @Pattern(regexp = "(?=^.{8,16}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$",message="Must Have  1 number 1 LowerCase 1UpperCase and 1 spl Char min size 8 max size 16")
+
     @Transient
 	private String user_Password;
 	

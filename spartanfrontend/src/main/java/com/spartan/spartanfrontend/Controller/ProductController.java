@@ -35,7 +35,7 @@ public class ProductController {
 	
 	
 	
-	@RequestMapping("/product")
+	@RequestMapping("admin/product")
 		public String productpage(Model m) {
 		System.out.println("hi");
 			m.addAttribute("productpage",true);
@@ -47,7 +47,7 @@ public class ProductController {
 			
 		}
 	
-	@RequestMapping("/addProduct")
+	@RequestMapping("admin/addProduct")
 	public String addProduct(@Valid @ModelAttribute("product") Product Product, BindingResult BR, Model m) {
 		if (BR.hasErrors()) {
 			System.out.println("err");
@@ -82,7 +82,7 @@ public class ProductController {
 		return "index";
 	}
 	
-	@RequestMapping("/deleteproduct")
+	@RequestMapping("admin/deleteproduct")
 	public String deleteproduct(@RequestParam("pid") int pid)
 	{
 		productdaoiImpl.DeleteProduct(productdaoiImpl.SelectProduct(pid));
@@ -94,10 +94,10 @@ public class ProductController {
 		{
 				x.delete();
 		}	
-		return "redirect:/product";
+		return "redirect:/admin/product";
 	}
 	
-	@RequestMapping("/editproduct")
+	@RequestMapping("admin/editproduct")
 	public String editproduct(@RequestParam("pid") int pid,Model m)
 	{
 
@@ -113,13 +113,14 @@ public class ProductController {
 }
 
 
-	@RequestMapping("/updateproduct")
+	@RequestMapping("admin/updateproduct")
 	public String editproduct(@Valid @ModelAttribute("product") Product Product, BindingResult BR, Model m) {
 		if (BR.hasErrors()) {
 			System.out.println("err");
 			m.addAttribute("productpage", true);
 			m.addAttribute("title", "spartan-product");
 			m.addAttribute("product", Product);
+			m.addAttribute("catlist",categorydaoImpl.ViewAllCategory());
 			m.addAttribute("prodlist",productdaoiImpl.showallProduct());
 			m.addAttribute("edit",true);
 
@@ -129,6 +130,7 @@ public class ProductController {
 				m.addAttribute("productpage", true);
 				m.addAttribute("title", "spartan-Category");
 				m.addAttribute("product",new Product());
+				m.addAttribute("catlist",categorydaoImpl.ViewAllCategory());
 				m.addAttribute("prodlist",productdaoiImpl.showallProduct());
 				m.addAttribute("edit",false);
 
@@ -137,6 +139,7 @@ public class ProductController {
 				m.addAttribute("productpage", true);
 				m.addAttribute("title", "spartan-product");
 				m.addAttribute("product", Product);
+				m.addAttribute("catlist",categorydaoImpl.ViewAllCategory());
 				m.addAttribute("prodlist",productdaoiImpl.showallProduct());
 				m.addAttribute("edit",true);
 
@@ -200,7 +203,7 @@ public class ProductController {
 	@RequestMapping(value = "/products")//2nd change
 	 public String catproducts(Model m,@RequestParam("catname") String name) {
 	  m.addAttribute("viewallproductspage", true);
-	  m.addAttribute("title", "GiftGalore-Products");
+	  m.addAttribute("title", "Spartan-Products");
 	  m.addAttribute("prodlist", productdaoiImpl.SelectCatproduct(name));
 	  m.addAttribute("catlist", categorydaoImpl.ViewAllCategory());
 	  return "index";

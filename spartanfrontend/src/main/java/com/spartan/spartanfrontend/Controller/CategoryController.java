@@ -24,7 +24,7 @@ public class CategoryController {
 
 
 	
-	@RequestMapping("/category")
+	@RequestMapping("admin/category")
 		public String categorypage(Model m) {
 		System.out.println("hi");
 			m.addAttribute("categorypage",true);
@@ -36,7 +36,7 @@ public class CategoryController {
 			
 		}
 	 
-	@RequestMapping("/addCategory")
+	@RequestMapping("admin/addCategory")
 	public String addCategory(@Valid @ModelAttribute("category") Category Category, BindingResult BR, Model m) {
 		if (BR.hasErrors()) {
 			System.out.println("err");
@@ -66,14 +66,14 @@ public class CategoryController {
 	}
 
 
-	@RequestMapping("/deletecategory")
+	@RequestMapping("admin/deletecategory")
 	public String deletecategory(@RequestParam("cname") String cname)
 	{
 		categorydaoImpl.DeleteCategory(cname);
-		return "redirect:/category";
+		return "redirect:/admin/category";
 	}
 	
-	@RequestMapping("/editcategory")
+	@RequestMapping("admin/editcategory")
 	public String editcategory(@RequestParam("cname") String cname,Model m)
 	{
 
@@ -88,7 +88,7 @@ public class CategoryController {
 }
 
 
-	@RequestMapping("/updatecategory")
+	@RequestMapping("admin/updatecategory")
 	public String editCategory(@Valid @ModelAttribute("category") Category Category, BindingResult BR, Model m) {
 		if (BR.hasErrors()) {
 			System.out.println("err");

@@ -1,16 +1,19 @@
 package com.spartan.spartanbackend.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
 public class Cart {
 
 	@Id
@@ -27,7 +30,13 @@ public class Cart {
 	private String product_Name;
 
 	@Column(nullable = false)
-	private String quantity;
+	@Min(value=1)
+	@Max(value=5)
+	private int quantity;
+
+
+	@Column(nullable = false)
+	private int price;
 
 	public int getItemid() {
 		return itemid;
@@ -61,19 +70,19 @@ public class Cart {
 		this.product_Name = product_Name;
 	}
 
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
@@ -84,9 +93,6 @@ public class Cart {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-
-	@Column(nullable = false)
-	private String price;
 
 	@Column(nullable = false)
 	private int total;

@@ -1,4 +1,6 @@
 com\spartan\spartanfrontend\Controller\CategoryController.class
 com\spartan\spartanfrontend\Controller\UserController.class
+com\spartan\spartanfrontend\Controller\LoginController.class
+com\spartan\spartanfrontend\Controller\CartController.class
 com\spartan\spartanfrontend\Controller\HomeController.class
 com\spartan\spartanfrontend\Controller\ProductController.class

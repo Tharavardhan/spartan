@@ -1,7 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+<c:set var="cr1" value="${pageContext.request.contextPath}/admin"></c:set>
+<link	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
 	rel="stylesheet">
 
 <style>
@@ -79,24 +79,24 @@ h4 {
 	</c:if>
 	<div class="row">
 		<div>
-			<div class="form-login">
+		
 				<h4>Category</h4>
 				<form:form modelAttribute="category" action="${url}"
 					method="post">
 					<c:if test="${edit}">
 						<form:input type="text" id="category_id"
-							class="form-control input-sm chat-input" path="category_id"
+							class="form-control" path="category_id"
 							readonly="true" />
 					</c:if>
 
 					<form:input type="text" id="Category_Name"
-						class="form-control input-sm chat-input"
+						class="form-control"
 						placeholder="Category_Name" path="category_Name" />
 					<form:errors path="category_Name" class="stylingerror" />
 					<br />
 
 					<form:input type="text" id="CategoryDesc"
-						class="form-control input-sm chat-input"
+						class="form-control"
 						placeholder="CategoryDesc" path="categoryDesc" />
 					<form:errors path="categoryDesc" class="stylingerror" />
 					<br />
@@ -153,11 +153,11 @@ h4 {
 
 
 									<td><a class='btn btn-success btn-xs'
-										href="editcategory?cname=${l.category_Name}"><span
+										href="${cr1}/editcategory?cname=${l.category_Name}"><span
 											class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
 									<td><a class='btn btn-danger btn-xs'
-										href="deletecategory?cname=${l.category_Name}"><span
+										href="${cr1}/deletecategory?cname=${l.category_Name}"><span
 											class="glyphicon glyphicon-trash"></span> Delete</a></td>
 
 								</tr>
@@ -175,5 +175,5 @@ h4 {
 
 		</div>
 	</div>
-</div>
+
 

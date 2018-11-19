@@ -12,7 +12,8 @@ section .section-title {
     text-transform: uppercase;
 }
 #footer {
-    background: #E64C23 !important;
+    background: #E64C23!important;
+    padding-top: 15px;
 }
 #footer h5{
 	padding-left: 10px;
@@ -76,7 +77,6 @@ section .section-title {
 
 
 </style>
-<div id="justpushtobottom"></div>
 <section id="footer">
 		<div class="container">
 			<div class="row text-center text-xs-center text-sm-left text-md-left">

@@ -1,54 +1,78 @@
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr3" value="${pageContext.request.contextPath}" />
+<c:set var="CR"
+	value="${pageContext.request.contextPath}/resources/pimages" />
 <style>
 .thumbnail {
-	height: 200px;
+	height: 200;
+	width: 350;
+	color: #BDE623;
 }
 
-.label-info {
+.label {
 	display: block;
 	width: 320px;
+	color: black;
 	word-break: break-all;
+	background-color: white;
 }
 
-.btn btn-info {
-	background-color: #15cdc7;
+.btn {
+	background-color: #602040;
+	margin: #8CE623;
+	color: white;
+}
+
+.btn:hover {
+	background-color: #602040;
+	margin: #8CE623;
+	color: white;
+}
+
+.list-group {
+	margin: auto;
+	float: left;
+	padding-top: 20px;
+}
+
+.lead {
+	margin: auto;
+	left: 0;
+	right: 0;
+	padding-top: 10%;
+}
+
+.img-responsive {
+	height: 100;
+	width: 100;
 }
 </style>
- <div>
- <nav class="navbar navbar-custom">
-  <a class="navbar-brand">Shop By Category</a>
-  <div>
-   <ul class="nav navbar-nav">
-    <c:forEach items="${catlist}" var="c">
-     <li><a href="products?catname=${c.category_Name}">${c.category_Name}</a>
-     </li>
-    </c:forEach>
-   </ul>
-  </div>
- </nav>
-</div>
-
-
-
-
-
-<div class="container">
-	<div class="col-md-12">
+<div class="row">
+	<div class="col-md-2 col-sm-2 col-xs-12">
+		<div class="list-group">
+			<a href="${cr3}/allproducts" class="list-group-item">All Category</a>
+			<c:forEach items="${catlist}" var="c">
+				<a class="list-group-item"
+					href="${cr3}/products?catname=${c.category_Name}">${c.category_Name}</a>
+			</c:forEach>
+		</div>
+	</div>
+	<div class="col-md-10 col-sm-2 col-xs-12">
 		<c:forEach var="l" items="${prodlist}">
 			<div class="col-sm-6 col-md-4">
 				<div class="thumbnail">
 					<h4 class="text-center">
-						<span class="label label-info" style="word-wrap: break-word;">${l.product_Name}</span>
+						<span class="label " style="word-wrap: break-word;">${l.product_Name}</span>
 					</h4>
-					<img src="resources/pimages/${l.product_id}.jpg"
-						class="img-responsive">
+					<img src="${CR}/${l.product_id}.jpg" class="img-responsive">
 					<div class="caption">
 						<div class="row">
 							<div class="col-md-6">
 								<h4 class="text-center">&#8377 ${l.price} /-</h4>
 							</div>
 							<div class="col-md-6">
-								<a href='oneproduct?pid=${l.product_id}' class="btn btn-info"><span
+								<a href='${cr3}/oneproduct?pid=${l.product_id}' class="btn"><span
 									class="glyphicon glyphicon-info-sign"></span> Info</a>
 							</div>
 						</div>

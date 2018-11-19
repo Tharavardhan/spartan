@@ -1,5 +1,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:set var="CR"
+ value="${pageContext.request.contextPath}/resources/pimages" />
+<c:set var="cr2" value="${pageContext.request.contextPath}/admin"></c:set>
+
 <!--Pulling Awesome Font -->
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
@@ -79,47 +83,47 @@ h4 {
 
 	<div class="row">
 		<div>
-			<div class="form-login">
+			
 				<h4>Product</h4>
 
 
-				<form:form modelAttribute="product" action="addProduct"
+				<form:form modelAttribute="product" action="${url}"
 					method="post" enctype="multipart/form-data">
 
 					<c:if test="${edit}">
 						<form:input type="text" id="product_id"
-							class="form-control input-sm chat-input" path="product_id"
+							class="form-control" path="product_id"
 							readonly="true" />
 					</c:if>
 
 					<form:input type="text" id="Product_Name"
-						class="form-control input-sm chat-input"
+						class="form-control"
 						placeholder="Product_Name" path="product_Name" />
 					<form:errors path="product_Name" class="stylingerror" />
 					<br />
 
 					<form:input type="text" id="productDesc"
-						class="form-control input-sm chat-input" placeholder="productDesc"
+						class="form-control" placeholder="productDesc"
 						path="productDesc" />
 					<form:errors path="productDesc" class="stylingerror" />
 					<br />
 
 					<form:input type="text" id="Quantity"
-						class="form-control input-sm chat-input" placeholder="Quantity"
+						class="form-control" placeholder="Quantity"
 						path="quantity" />
 					<form:errors path="quantity" class="stylingerror" />
 					<br />
 
 					<form:input type="text" id="Price"
-						class="form-control input-sm chat-input" placeholder="Price"
+						class="form-control" placeholder="Price"
 						path="price" />
 					<form:errors path="price" class="stylingerror"/>
 					<br />
 					
-					<form:input type="file" path="pimage" class="form-control input-sm chat-input"/>
+					<form:input type="file" path="pimage" class="form-control"/>
                      <br/>
 					<form:select path="category.category_id"
-						class="form-control input-sm chat-input">
+						class="form-control">
 						<c:forEach items="${catlist}" var="c">
 							<form:option value="${c.category_id}">${c.category_Name}</form:option>
 						</c:forEach>
@@ -144,8 +148,13 @@ h4 {
 						</c:if>
 
 					</div>
+
 				</form:form>
-				<div class="table-responsive" style="padding-top: 20px">
+
+			
+
+		</div>
+						<div class="table-responsive" style="padding-top: 20px">
 
 					<table id="table_id" name="table_id" class="display"
 						style="padding-top: 20px">
@@ -177,7 +186,7 @@ h4 {
 							<c:forEach items="${prodlist}" var="l">
 
 								<tr>
-                                    <td><img src="resources/pimages/${l.product_id}.jpg" height="50px" width="50px"></td>
+                                    <td><img src="${CR}/${l.product_id}.jpg" height="50px" width="50px"></td>
                                     
 									<td>${l.product_id}</td>
 
@@ -192,11 +201,11 @@ h4 {
 									<td>${l.category.category_Name}</td>
 
 									<td><a class='btn btn-success btn-xs'
-										href="editproduct?pid=${l.product_id}"><span
+										href="${cr2}/editproduct?pid=${l.product_id}"><span
 											class="glyphicon glyphicon-edit"></span> Edit</a></td>
 
 									<td><a class='btn btn-danger btn-xs'
-										href="deleteproduct?pid=${l.product_id}"><span
+										href="${cr2}/deleteproduct?pid=${l.product_id}"><span
 											class="glyphicon glyphicon-trash"></span> Delete</a></td>
 
 								</tr>
@@ -209,10 +218,7 @@ h4 {
 
 				</div>
 
-
-			</div>
-
-		</div>
+		
 	</div>
 </div>
 

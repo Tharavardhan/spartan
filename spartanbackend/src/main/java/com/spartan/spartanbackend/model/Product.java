@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,14 +34,14 @@ public class Product {
 	private String productDesc;
 
 	@Column(nullable = false)
-	@NotBlank(message = "Quantity is mandatory")
+	@NotNull(message = "Quantity is mandatory")
 	@Min(value=10,message="Quantity should be 10 minimum")
-	private String quantity;
+	private int quantity;
 
 	@Column(nullable = false)
-	@NotBlank(message = "Price is mandatory")
-	@Min(value=1,message="Price should be Rs1 minimum")
-	private String price;
+	@NotNull(message = "Price is mandatory")
+	@Min(value=1,message="Price should be Rs10 minimum")
+	private int price;
 
 	@ManyToOne()
 	@OnDelete(action=OnDeleteAction.CASCADE)
@@ -50,59 +51,72 @@ public class Product {
 		return product_Name;
 	}
 
-	public void setProduct_Name(String product_Name) {
-		this.product_Name = product_Name;
-	}
+	
+	@Transient
+	MultipartFile pimage;
 
 	public int getProduct_id() {
 		return product_id;
 	}
 
+
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
+
 
 	public String getProductDesc() {
 		return productDesc;
 	}
 
+
 	public void setProductDesc(String productDesc) {
 		this.productDesc = productDesc;
 	}
 
-	public String getQuantity() {
+
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(String quantity) {
+
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
-	public String getPrice() {
+
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+
+	public void setPrice(int price) {
 		this.price = price;
 	}
+
 
 	public Category getCategory() {
 		return category;
 	}
 
+
 	public void setCategory(Category category) {
 		this.category = category;
 	}
 
-	@Transient
-	MultipartFile pimage;
 
 	public MultipartFile getPimage() {
 		return pimage;
 	}
 
+
 	public void setPimage(MultipartFile pimage) {
 		this.pimage = pimage;
+	}
+
+
+	public void setProduct_Name(String product_Name) {
+		this.product_Name = product_Name;
 	}
 	
 }
