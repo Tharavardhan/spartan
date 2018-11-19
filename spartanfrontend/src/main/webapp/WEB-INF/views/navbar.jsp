@@ -44,8 +44,9 @@ background-color: transparent;}
 					<li><a href="${contextroot}/allproducts">View All products</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-
+                    
 					<li><a href="${contextroot}/user/viewCart"><span class="glyphicon">&#xe116;</span></a></li>
+					<li><a href="${contextroot}/user/viewOrders"><span class="glyphicon glyphicon-list-alt "></span> View Orders</a></li>
 					<li><a href="${contextroot}/Logout">Logout</a></li>
 					<li><a href="">Welcome ${sessionScope.username}</a></li>
 				</ul>

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.spartan.spartanbackend.DALayer.AddressDAO;
 import com.spartan.spartanbackend.model.Address;
 
-
 @Controller
 public class AddressController 
 {
@@ -96,4 +95,3 @@ public class AddressController
  }
  
 }
-

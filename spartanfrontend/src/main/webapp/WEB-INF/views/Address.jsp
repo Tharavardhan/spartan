@@ -7,10 +7,7 @@
 #bottom-block {
  padding: 15px 20px;
  
-}
-
-#btncolor{
-background-color: #ffcc00;
+ 
 }
 #submitbtn, #resetbtn {
  width: 34.5%;
@@ -23,27 +20,30 @@ background-color: #ffcc00;
  width: 100%;
  margin-right: 4px;
  color: #ffffff;
- background: #ffcc00;
+ background: linear-gradient(to bottom, #15cdc7 50%, #15cdc7 50%);
 }
 #submitbtn:hover, #resetbtn:hover, #paybutton:HOVER {
- background: #ffcc00;
+ background: linear-gradient(to bottom, #aed581 50%, #9ccc65 50%);
  color: #ffffff;
 }
 #editlink, #removelink {
- color: #ffcc00;
+ color: #6C3483;
  font-size: 15px;
 }
 #holder {
  display: inline-block;
  background-color: #ffffff;
  border-radius: 5px;
- box-shadow: 2px 2px 20px #ffcc00;
+ box-shadow: 2px 2px 20px #6C3483;
  margin: 10px;
+}
+.fa fa-truck {
+background-color: #ffffff;
 }
 </style>
 <div class="container">
  <div class="row">
-  <div class="col-sm-5">
+  <div class="col-sm-4">
    <c:if test="${edit}">
    <c:url value='/user/updateaddress' var="url"></c:url>
    </c:if>
@@ -58,7 +58,8 @@ background-color: #ffcc00;
      <div class="form-group">
       <label class="control-label">Enter Name</label>
       <div class="controls">
-       <form:input class="form-control input-xlarge" placeholder="Enter Name" path="name" />
+       <form:input class="form-control input-xlarge"
+        placeholder="Enter Name" path="name" />
        <form:errors path="name" cssStyle="color:red"></form:errors>
       </div>
      </div>
@@ -111,18 +112,18 @@ background-color: #ffcc00;
       </div>
      </div>
      <div class="form-group">
-      <input type="submit" class="btn button" id="btncolor">
+      <input type="submit" class="btn button">
      </div>
     </form:form>
    </div>
   </div>
-  <div class="col-sm-7">
+  <div class="col-sm-8">
    <div class="col-md-12">
     <c:forEach var="al" items="${addresslist}">
      <div id="holder" class="col-sm-6 col-md-4">
       <div id="bottom-block">
        <div>
-        <a href=""
+        <a href="placeorder?addid=${al.addressid}"
          id="paybutton" class="btn" type="submit"> <i
          class="fa fa-truck" aria-hidden="true"></i> Deliver Here
         </a>
@@ -132,8 +133,8 @@ background-color: #ffcc00;
        <div>${al.addline2}</div>
        <div>${al.city}</div>
        <div>${al.state}</div>
-      
-       <div>${al.country}</div><div>${al.pincode}</div>
+       <div>${al.country}-${al.pincode}</div>
+      </div>
       <div id="top-block">
        <a href="editadd?addid=${al.addressid}" class="btn" id="editlink"><span
         class="glyphicon glyphicon-pencil"></span></a> <a
